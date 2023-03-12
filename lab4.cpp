@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
+#include <vector>
 using namespace std;
 
 struct student {
@@ -20,7 +20,7 @@ int wczytajIloscStudentow(const string &sciezka) {
     return n;
 }
 
-student* wczytajStudentow(string sciezkaDoPliku, int n) {
+student *wczytajStudentow(string sciezkaDoPliku, int n) {
 
     student *tab = new student[n];
     ifstream plik(sciezkaDoPliku);
@@ -51,12 +51,25 @@ void zad1() {
     string sciezka = "C:\\Users\\annad\\CLionProjects\\Podstawy-algorytm-w\\studenci.csv";
     int iloscStudentow = wczytajIloscStudentow(sciezka);
     student *studenci = wczytajStudentow(sciezka, iloscStudentow);
-
     wyswietlStudentow(studenci, iloscStudentow);
 }
 
 void zad2() {
     cout << "uruchomiono zad 2 " << endl;
+    string sciezka = "C:\\Users\\annad\\CLionProjects\\Podstawy-algorytm-w\\studenci.csv";
+    int iloscStudentow = wczytajIloscStudentow(sciezka);
+    student *studenci = wczytajStudentow(sciezka, iloscStudentow);
+
+    cout << "Zawartosc tablicy przed podzialem:" << endl;
+    wyswietlStudentow(studenci, iloscStudentow);
+    vector<student> mniejNiz10;
+    vector<student> wiecejNiz10;
+    for (int i = 0; i < iloscStudentow; i++) {
+        if(studenci[i].punkty > 10){
+            mniejNiz10.push_back(studenci[i]);
+        }
+    }
+
 }
 
 void zad3() {
